@@ -1,20 +1,21 @@
 #!/usr/bin/env node
-import * as comander from 'commander'
-const { program } = comander
+import * as commander from 'commander';
+const { program } = commander;
 
 program
     .version("0.0.1")
     .description('Compares two configuration files and shows a difference.')
-    .option("-h, --help", "output usage information")
-    .parse(process.argv);
+    .arguments('<filepath1> <filepath2>')
+    .option("-f, --format <type>", "output format")
+    .action((path1, path2) => {
+        console.log(path1, path2);
+    });
 
-
-const options = program.opts();
-console.log(options)
-if (options.help) {
-    console.log(" Usage: gendiff [options]")
-    console.log("Compares two configuration files and shows a difference.")
-    console.log(" Options:")
-    console.log(" - V, --version        output the version number")
-    console.log(" - h, --help           output usage information")
+// Display help if no arguments are provided
+if (process.argv.length <= 2) {
+    program.outputHelp();
+    process.exit(0);
 }
+
+program.parse(process.argv);
+
