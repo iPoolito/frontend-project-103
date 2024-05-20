@@ -44,5 +44,5 @@ jobs:
 
       - name: Report to CodeClimate
         run: ./cc-test-reporter after-build --exit-code $?
-        env:
+        with:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
