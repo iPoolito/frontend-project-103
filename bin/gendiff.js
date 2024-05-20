@@ -7,17 +7,8 @@ program
     .version("0.0.1")
     .description('Compares two configuration files and shows a difference.')
     .arguments('<filepath1> <filepath2>')
-    .option("-f, --format <type>", "output format")
+    .option('-f, --format <type>', 'output format', 'stylish')
     .action((path1, path2) => {
-        console.log(path1, path2, program.opts().format);
-        genDiff({ path1, path2, options: program.opts().format })
-    });
-
-// Display help if no arguments are provided
-if (process.argv.length <= 2) {
-    program.outputHelp();
-    process.exit(0);
-}
-
-program.parse(process.argv);
-
+        genDiff({ path1, path2, formatType: program.opts().format })
+    })
+    .parse(process.argv);
