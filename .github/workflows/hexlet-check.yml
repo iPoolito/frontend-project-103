@@ -34,13 +34,13 @@ jobs:
       - name: Run linter
         run: npm run lint
 
-      - name: Run tests
-        run: npm test
-
-      - name: Install CodeClimate test reporter
+      - name: Run tests with coverage
         run: |
+          npm test -- --coverage
           curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
           chmod +x ./cc-test-reporter
+          ./cc-test-reporter format-coverage -t lcov -o coverage/codeclimate.json coverage/lcov.info
+          ./cc-test-reporter upload-coverage -i coverage/codeclimate.json
 
       - name: Report to CodeClimate
         run: ./cc-test-reporter after-build --exit-code $?
