@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint .",
-    "test": "npx jest"
+    "test": "jest --coverage --coverageReporters lcov"
   },
   "author": "",
   "license": "ISC",
