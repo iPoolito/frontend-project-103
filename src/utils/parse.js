@@ -2,7 +2,7 @@ const parsers = {
   json: JSON.parse,
 };
 
-export const parseFile = (data, extension) => {
+export default function parseFile(data, extension) {
   const parser = parsers[extension];
 
   if (!parser) {
@@ -14,4 +14,4 @@ export const parseFile = (data, extension) => {
   } catch (error) {
     throw new Error(`Failed to parse data with extension "${extension}": ${error.message}`);
   }
-};
+}

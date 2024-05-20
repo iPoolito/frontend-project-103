@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import getDiff from './utils/diff.js';
-import { parseFile } from './utils/parse.js';
+import parseFile from './utils/parse.js';
 import format from './utils/format.js';
 
 const getFullPath = (filepath) => path.resolve(process.cwd(), filepath);
@@ -32,5 +32,6 @@ export default function genDiff({ path1, path2, formatType = 'json' }) {
   const diff = getDiff({ dataFile1: firstFileData, dataFile2: secondFileData });
   const formattedDiff = format({ data: diff, formatType });
   console.log({ formattedDiff });
+  // eslint-disable-next-line consistent-return
   return formattedDiff;
 }

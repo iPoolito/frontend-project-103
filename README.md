@@ -1,6 +1,7 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/iPoolito/frontend-project-103/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/iPoolito/frontend-project-103/actions)
-
+[![Maintainability](https://api.codeclimate.com/v1/badges/a39883c0e13e4ca0c611/maintainability)](https://codeclimate.com/github/iPoolito/frontend-project-103/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/a39883c0e13e4ca0c611/test_coverage)](https://codeclimate.com/github/iPoolito/frontend-project-103/test_coverage)
 # Generador de Diferencias
 *Utilidad CLI*
 
