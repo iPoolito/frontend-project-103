@@ -1,12 +1,12 @@
 import _ from 'lodash';
 import {
-  UNCHANGED_VALUE, ADD_VALUE, CHANGED_VALUE, DELETED_VALUE,
+  UNCHANGED_VALUE, ADD_VALUE, CHANGED_VALUE, DELETED_VALUE, NESTED_VALUE, ROOT_VALUE,
 } from '../constants.js';
 
-export default function getDiff({ dataFile1, dataFile2 }) {
+function getDiff({ dataFile1, dataFile2 }) {
   const keys = _.sortBy(_.union(Object.keys(dataFile1), Object.keys(dataFile2)));
 
-  const mappedValues = keys.map((key) => {
+  return keys.map((key) => {
     const valueInFile1 = dataFile1[key];
     const valueInFile2 = dataFile2[key];
 
@@ -15,6 +15,13 @@ export default function getDiff({ dataFile1, dataFile2 }) {
     }
     if (!(key in dataFile2)) {
       return { key, type: DELETED_VALUE, value: valueInFile1 };
+    }
+    if (_.isPlainObject(valueInFile1) && _.isPlainObject(valueInFile2)) {
+      return {
+        key,
+        type: NESTED_VALUE,
+        children: getDiff({ dataFile1: valueInFile1, dataFile2: valueInFile2 }),
+      };
     }
     if (!_.isEqual(valueInFile1, valueInFile2)) {
       return {
@@ -27,8 +34,9 @@ export default function getDiff({ dataFile1, dataFile2 }) {
 
     return { key, type: UNCHANGED_VALUE, value: valueInFile2 };
   });
-  return {
-    type: 'root',
-    children: mappedValues,
-  };
 }
+
+export default (data1, data2) => ({
+  type: ROOT_VALUE,
+  children: getDiff(data1, data2),
+});

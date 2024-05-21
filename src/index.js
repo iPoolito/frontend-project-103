@@ -6,7 +6,7 @@ import format from './utils/format.js';
 
 const getFullPath = (filepath) => path.resolve(process.cwd(), filepath);
 
-const readFile = (fullFilePath) => {
+export const readFile = (fullFilePath) => {
   try {
     const extension = path.extname(fullFilePath).split('.').pop();
     const data = parseFile(fs.readFileSync(fullFilePath, 'utf-8'), extension);
@@ -17,7 +17,7 @@ const readFile = (fullFilePath) => {
   }
 };
 
-export default function genDiff({ path1, path2, formatType = 'json' }) {
+export default function genDiff({ path1, path2, formatType = 'stylish' }) {
   const firstFilePath = getFullPath(path1);
   const secondFilePath = getFullPath(path2);
 
@@ -31,7 +31,6 @@ export default function genDiff({ path1, path2, formatType = 'json' }) {
 
   const diff = getDiff({ dataFile1: firstFileData, dataFile2: secondFileData });
   const formattedDiff = format({ data: diff, formatType });
-  console.log({ formattedDiff });
   // eslint-disable-next-line consistent-return
   return formattedDiff;
 }

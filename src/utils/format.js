@@ -1,8 +1,11 @@
+import renderTree from './stylish.js';
+
 const formatters = {
   json: JSON.stringify,
+  stylish: renderTree,
 };
 
-export default function format({ data, formatType = 'json' }) {
+export default function format({ data, formatType = 'stylish' }) {
   const formatter = formatters[formatType];
 
   if (!formatter) {
