@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import getDiff from './utils/diff.js';
 import parseFile from './utils/parse.js';
-import format from './utils/format.js';
+import format from './utils/formaters/index.js';
 
 const getFullPath = (filepath) => path.resolve(process.cwd(), filepath);
 

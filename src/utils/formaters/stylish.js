@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import {
   ADD_VALUE, CHANGED_VALUE, DELETED_VALUE, NESTED_VALUE, ROOT_VALUE, UNCHANGED_VALUE,
-} from '../constants.js';
+} from '../../constants.js';
 
 const getIndentation = (depth, spacesCount = 4) => ' '.repeat(depth * spacesCount - 2);
 

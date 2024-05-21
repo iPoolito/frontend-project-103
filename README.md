@@ -33,6 +33,7 @@ _Ejemplo de descripción de comandos, no necesariamente de esta manera_
 
 - `node bin/gendiff ./__fixtures__/file1.json ./__fixtures__/file2.json -f json`
 - `node bin/gendiff ./__fixtures__/file1-y.yaml ./__fixtures__/file2-y.yaml `
+- `node bin/gendiff ./__fixtures__/file1-y.yaml ./__fixtures__/file2-y.yaml -f plain  `
 
 ## Demostración
 

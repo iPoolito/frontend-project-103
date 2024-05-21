@@ -11,11 +11,17 @@ const getPath = (filename) => path.join(__dirname, '../', '__fixtures__', filena
 const readTestsFiles = (filename) => fs.readFileSync(getPath(filename), 'utf-8').trim();
 
 const stylishResult = readTestsFiles('stylish-result.txt');
-
+const plainResult = readTestsFiles('plain-result.txt');
 describe('gendiff', () => {
-  test('Format for stylish Result YAML', () => {
+  test('Format for stylish Result - YAML File', () => {
     const filepath1 = getPath('file1-y.yaml');
     const filepath2 = getPath('file2-y.yaml');
     expect(genDiff({ path1: filepath1, path2: filepath2, formatType: 'stylish' })).toEqual(stylishResult);
+  });
+
+  test('Format for plain Result - YAML File', () => {
+    const filepath1 = getPath('file1-y.yaml');
+    const filepath2 = getPath('file2-y.yaml');
+    expect(genDiff({ path1: filepath1, path2: filepath2, formatType: 'plain' })).toEqual(plainResult);
   });
 });

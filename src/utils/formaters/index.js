@@ -1,8 +1,10 @@
-import renderTree from './stylish.js';
+import renderStylishTree from './stylish.js';
+import renderToPlainText from './plain.js';
 
 const formatters = {
   json: JSON.stringify,
-  stylish: renderTree,
+  stylish: renderStylishTree,
+  plain: renderToPlainText,
 };
 
 export default function format({ data, formatType = 'stylish' }) {
