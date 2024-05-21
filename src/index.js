@@ -17,7 +17,7 @@ export const readFile = (fullFilePath) => {
   }
 };
 
-export default function genDiff({ path1, path2, formatType = 'stylish' }) {
+export default function genDiff(path1, path2, formatType = 'stylish') {
   const firstFilePath = getFullPath(path1);
   const secondFilePath = getFullPath(path2);
 
@@ -29,7 +29,7 @@ export default function genDiff({ path1, path2, formatType = 'stylish' }) {
     return;
   }
 
-  const diff = getDiff({ dataFile1: firstFileData, dataFile2: secondFileData });
+  const diff = getDiff(firstFileData, secondFileData);
   const formattedDiff = format({ data: diff, formatType });
   // eslint-disable-next-line consistent-return
   return formattedDiff;
