@@ -12,7 +12,7 @@ const readTestsFiles = (filename) => fs.readFileSync(getPath(filename), 'utf-8')
 
 const stylishResult = readTestsFiles('stylish-result.txt');
 const plainResult = readTestsFiles('plain-result.txt');
-const jsonResult=readTestsFiles('json-result.json');
+const jsonResult = readTestsFiles('json-result.json');
 describe('gendiff', () => {
   test('Format for stylish Result - YAML File', () => {
     const filepath1 = getPath('file1-y.yaml');
