@@ -8,7 +8,7 @@ const getFullPath = (filepath) => path.resolve(process.cwd(), filepath);
 
 export const readFile = (fullFilePath) => {
   try {
-    const extension = path.extname(fullFilePath).split('.').pop();
+    const extension = path.extname(fullFilePath).split('.')[1];
     const data = parseFile(fs.readFileSync(fullFilePath, 'utf-8'), extension);
     return data;
   } catch (err) {
